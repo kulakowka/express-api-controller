@@ -5,10 +5,13 @@
 
 var path = require('path')
 var app = require('express')()
+var bodyParser = require('body-parser')
 var expressValidator = require('express-validator')
 var controller = require('express-api-controller')
 var controllers = controller(path.resolve(__dirname, '../controllers'))
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(expressValidator())
 
 app
