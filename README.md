@@ -5,8 +5,11 @@
 
 var path = require('path')
 var app = require('express')()
+var expressValidator = require('express-validator')
 var controller = require('express-api-controller')
 var controllers = controller(path.resolve(__dirname, '../controllers'))
+
+app.use(expressValidator())
 
 app
   .route('/api/v1/accounts')
