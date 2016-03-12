@@ -13,7 +13,8 @@ app
     .get(controllers.api.v1.accounts.index)
     .post(controllers.api.v1.accounts.create)
 
-module.exports = router
+app.listen(3000)
+
 ```
 
 ```javascript
