@@ -19,8 +19,8 @@ module.exports = router
 ```javascript
 /**
  * Controller: accounts
- * Action:     index
- * Method:     GET
+ * Action:     create
+ * Method:     POST
  * Path:       api/v1/accounts
  */
 
@@ -28,27 +28,40 @@ var Account = require('../models/account')
 
 module.exports = {
 
-  // Validations middleware
+  // Validattion middleware
   validations: function * (req, res, next) {
-    console.log('api/v1/accounts:index:validations')
+    req.checkBody('email', 'Invalid postparam').notEmpty().isEmail()
+    req.checkBody('password', 'Invalid postparam').notEmpty()
+
     next()
   },
 
   // Sanitization middleware
   sanitize: function * (req, res, next) {
-    console.log('api/v1/accounts:index:sanitize')
+    req.sanitizeBody('email').normalizeEmail()
+
     next()
   },
 
   // Action logic middleware
   action: function * (req, res, next) {
-    console.log('api/v1/accounts:index:action')
-    // Getting accounts from database
-    const data = yield Account.without('password').limit(10).execute()
+
+    // Getting request data
+    var { email, password } = req.body
+
+    // Create new account
+    var account = new Account({
+      email,
+      password
+    })
+
+    // Save account to database
+    const data = yield account.save()
 
     // Response data with json
     res.json(data)
   }
 
 }
+
 ```
