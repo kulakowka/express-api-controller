@@ -1,0 +1,29 @@
+{
+  "name": "express-api-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kulakowka/express-api-controller.git"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "controller"
+  ],
+  "author": "Anton Kulakov (http://kulakowka.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kulakowka/express-api-controller/issues"
+  },
+  "homepage": "https://github.com/kulakowka/express-api-controller#readme",
+  "dependencies": {
+    "co-express": "^1.2.1",
+    "express-api-helper": "0.0.5",
+    "require-directory": "^2.1.1"
+  }
+}
