@@ -4,11 +4,11 @@
 'use strict'
 
 var path = require('path')
-var router = require('express').Router()
+var app = require('express')()
 var controller = require('express-api-controller')
 var controllers = controller(path.resolve(__dirname, '../controllers'))
 
-router
+app
   .route('/api/v1/accounts')
     .get(controllers.api.v1.accounts.index)
     .post(controllers.api.v1.accounts.create)
