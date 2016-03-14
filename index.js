@@ -5,7 +5,7 @@ var wrap = require('co-express')
 var requireDirectory = require('require-directory')
 
 function * checkErrors (req, res, next) {
-  var errors = req.asyncValidationErrors(true)
+  var errors = req.validationErrors(true)
   if (errors) api.badRequest(req, res, errors)
   next()
 }
